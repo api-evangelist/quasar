@@ -1,0 +1,103 @@
+swagger: '2.0'
+info:
+  title: QuasarDB cluster query API
+  version: 3.15.0-nightly.0
+  description: Find out more at https://doc.quasardb.net
+basePath: /api
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Bearer: []
+- UrlParam: []
+tags:
+- name: query
+paths:
+  /query:
+    post:
+      operationId: post-query
+      parameters:
+      - name: query
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Query'
+      responses:
+        '400':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+        '500':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Internal Error.
+        '200':
+          schema:
+            $ref: '#/definitions/QueryResult'
+          description: Successful operation
+          examples:
+            application/json:
+              tables:
+              - name: timeseries
+                columns:
+                - name: timestamps
+                  data:
+                  - 2017-01-01 T00:00:00
+                  - 2017-01-01 T00:00:01
+                - name: column_1
+                  data:
+                  - 0
+                  - 1
+      tags:
+      - query
+      summary: Query the database
+definitions:
+  QueryTable:
+    properties:
+      name:
+        type: string
+      columns:
+        type: array
+        items:
+          $ref: '#/definitions/QueryColumn'
+  QdbError:
+    properties:
+      message:
+        type: string
+  QueryColumn:
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+      data:
+        type: array
+        items:
+          type: object
+  Query:
+    type: object
+    properties:
+      query:
+        type: string
+  QueryResult:
+    type: object
+    properties:
+      tables:
+        type: array
+        items:
+          $ref: '#/definitions/QueryTable'
+    required:
+    - tables
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  UrlParam:
+    type: apiKey
+    name: token
+    in: query

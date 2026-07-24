@@ -1,0 +1,59 @@
+swagger: '2.0'
+info:
+  title: QuasarDB cluster Tables API
+  version: 3.15.0-nightly.0
+  description: Find out more at https://doc.quasardb.net
+basePath: /api
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Bearer: []
+- UrlParam: []
+tags:
+- name: Tables
+paths:
+  /tables/{name}.csv:
+    get:
+      operationId: get-table-csv
+      summary: Fetch the rows of a table between a given date range and return as csv
+      produces:
+      - text/csv
+      parameters:
+      - in: path
+        name: name
+        type: string
+        required: true
+      - in: query
+        name: start
+        type: string
+        required: true
+      - in: query
+        name: end
+        type: string
+        required: true
+      responses:
+        '400':
+          description: Bad Request.
+        '500':
+          description: Internal Error.
+        '200':
+          schema:
+            type: string
+            format: binary
+          description: Successful operation
+      tags:
+      - Tables
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  UrlParam:
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,67 @@
+swagger: '2.0'
+info:
+  title: QuasarDB cluster Login API
+  version: 3.15.0-nightly.0
+  description: Find out more at https://doc.quasardb.net
+basePath: /api
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Bearer: []
+- UrlParam: []
+tags:
+- name: Login
+paths:
+  /login:
+    post:
+      operationId: login
+      security: []
+      parameters:
+      - name: credential
+        in: body
+        schema:
+          $ref: '#/definitions/Credential'
+        required: true
+        description: The user's credential
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Token'
+          description: Successful operation
+        '401':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+      tags:
+      - Login
+definitions:
+  QdbError:
+    properties:
+      message:
+        type: string
+  Credential:
+    type: object
+    properties:
+      username:
+        type: string
+      secret_key:
+        type: string
+  Token:
+    type: object
+    properties:
+      token:
+        type: string
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  UrlParam:
+    type: apiKey
+    name: token
+    in: query

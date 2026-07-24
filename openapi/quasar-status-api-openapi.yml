@@ -1,0 +1,59 @@
+swagger: '2.0'
+info:
+  title: QuasarDB cluster Status API
+  version: 3.15.0-nightly.0
+  description: Find out more at https://doc.quasardb.net
+basePath: /api
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Bearer: []
+- UrlParam: []
+tags:
+- name: Status
+paths:
+  /status/liveness:
+    get:
+      security: []
+      operationId: status-liveness
+      responses:
+        '200':
+          description: Successful operation
+        '500':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+      tags:
+      - Status
+  /status/readiness:
+    get:
+      security: []
+      operationId: status-readiness
+      responses:
+        '200':
+          description: Successful operation
+        '500':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+      tags:
+      - Status
+definitions:
+  QdbError:
+    properties:
+      message:
+        type: string
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  UrlParam:
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,65 @@
+swagger: '2.0'
+info:
+  title: QuasarDB cluster option API
+  version: 3.15.0-nightly.0
+  description: Find out more at https://doc.quasardb.net
+basePath: /api
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Bearer: []
+- UrlParam: []
+tags:
+- name: option
+paths:
+  /option/parallelism:
+    get:
+      operationId: get-parallelism
+      responses:
+        '200':
+          schema:
+            type: integer
+            format: int64
+          description: Successful operation
+        '400':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+      tags:
+      - option
+      summary: Get the client max parallelism for this logged-in user
+  /option/max-in-buffer-size:
+    get:
+      operationId: get-max-in-buffer-size
+      responses:
+        '200':
+          schema:
+            type: integer
+            format: int64
+          description: Successful operation
+        '400':
+          schema:
+            $ref: '#/definitions/QdbError'
+          description: Bad Request.
+      tags:
+      - option
+      summary: Get the client max in buffer size
+definitions:
+  QdbError:
+    properties:
+      message:
+        type: string
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  UrlParam:
+    type: apiKey
+    name: token
+    in: query
