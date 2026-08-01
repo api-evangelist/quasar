@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://doc.quasar.ai/master/user-guide/api/rest.html + https://doc.quasar.ai/master/administration/security.html + openapi/quasar-rest-openapi-original.json
+authentication:
+  style: JWT bearer token
+  obtain: 'POST /api/login with {"username": "...", "secret_key": "<base64>"} returns a JWT valid for 12 hours.'
+  pass: "'Authorization: Bearer <token>' header, or a `token` query-string parameter (UrlParam scheme)."
+  cluster_auth: Clients authenticate to the cluster with a username + user private key + cluster public key; server-side RBAC privileges (select, insert, update, delete, create, drop, grant, user_manage, system, set_transaction) gate operations.
+  transport_encryption: Optional full-stream AES-GCM 256-bit encryption (global.security.encrypt_traffic); TLS available on the REST server (port 40443).
+query_model:
+  language: 'QuasarDB SQL, submitted as {"query": "..."} to POST /api/query.'
+  response: QueryResult with tables[] -> columns[] (name, type, data[]) — columnar JSON.
+  csv_export: GET /api/tables/{name}.csv streams a single table as CSV.
+pagination:
+  style: none-documented
+  note: The REST API returns full query result sets; paging is expressed in the SQL query (e.g. LIMIT) rather than via API pagination parameters.
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or documented idempotency contract on the REST API. Writes go through /api/query (SQL) or Prometheus remote-write.
+versioning:
+  style: shared 3.x semver across server and clients (see lifecycle/quasar-lifecycle.yml).
+error_envelope:
+  shape: '{"message": "<string>"}'
+  content_type: application/json
+  detail: see errors/quasar-problem-types.yml
+rate_limit_signal:
+  documented: false
+cross_references:
+  errors: errors/quasar-problem-types.yml
+  authentication: authentication/quasar-authentication.yml
+  lifecycle: lifecycle/quasar-lifecycle.yml

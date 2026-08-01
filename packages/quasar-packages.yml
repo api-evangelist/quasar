@@ -1,0 +1,77 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/bureau14 and public package registries
+packages:
+- language: python
+  registry: pypi
+  name: quasardb
+  url: https://pypi.org/project/quasardb/
+  install: pip install quasardb
+  repo: https://github.com/bureau14/qdb-api-python
+  official: true
+- language: dotnet
+  registry: nuget
+  name: quasardb
+  url: https://www.nuget.org/packages/quasardb/
+  install: dotnet add package quasardb
+  repo: https://github.com/bureau14/qdb-api-dotnet
+  version: 3.14.2
+  official: true
+- language: go
+  registry: pkg.go.dev
+  name: github.com/bureau14/qdb-api-go
+  url: https://pkg.go.dev/github.com/bureau14/qdb-api-go
+  install: go get github.com/bureau14/qdb-api-go
+  repo: https://github.com/bureau14/qdb-api-go
+  official: true
+- language: javascript
+  registry: npm
+  name: quasardb
+  url: https://www.npmjs.com/package/quasardb
+  install: npm install quasardb
+  repo: https://github.com/bureau14/qdb-api-nodejs
+  official: true
+  archived: true
+- language: java
+  registry: github
+  name: qdb-api-java
+  url: https://github.com/bureau14/qdb-api-java
+  repo: https://github.com/bureau14/qdb-api-java
+  official: true
+- language: php
+  registry: github
+  name: qdb-api-php
+  url: https://github.com/bureau14/qdb-api-php
+  repo: https://github.com/bureau14/qdb-api-php
+  official: true
+- language: r
+  registry: github
+  name: qdb-api-r
+  url: https://github.com/bureau14/qdb-api-r
+  repo: https://github.com/bureau14/qdb-api-r
+  official: true
+- language: ruby
+  registry: github
+  name: qdb-api-ruby
+  url: https://github.com/bureau14/qdb-api-ruby
+  repo: https://github.com/bureau14/qdb-api-ruby
+  official: true
+- language: c
+  registry: none
+  name: quasardb C API
+  url: https://doc.quasar.ai/master/user-guide/api/c.html
+  official: true
+  note: Distributed with the QuasarDB binary packages; no public source registry.
+connectors:
+- name: Kafka Connect
+  repo: https://github.com/bureau14/kafka-connect-qdb
+- name: Spark Connector
+  repo: https://github.com/bureau14/qdb-spark-connector
+- name: NATS Connector
+  repo: https://github.com/bureau14/qdb-nats-connector
+- name: Dask
+  repo: https://github.com/bureau14/qdb-dask-connector
+- name: Prometheus Exporter
+  repo: https://github.com/bureau14/qdb-prometheus-exporter
+- name: Grafana Plugin
+  repo: https://github.com/bureau14/qdb-grafana-plugin

@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/quasar-rest-openapi-original.json
+docs: https://doc.quasar.ai/master/administration/security.html
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+  model: JWT bearer token (REST) over public/private key cluster credentials with server-side RBAC.
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: "JWT bearer token obtained from POST /api/login (valid 12 hours); pass as 'Authorization: Bearer <token>'."
+  sources:
+  - openapi/quasar-rest-openapi-original.json
+- name: UrlParam
+  type: apiKey
+  in: query
+  parameter: token
+  description: The same JWT passed as a `token` query-string parameter for clients that cannot set headers.
+  sources:
+  - openapi/quasar-rest-openapi-original.json
+cluster_auth:
+  method: public/private key
+  components: [username, user private key, cluster public key]
+  rbac_privileges: [select, insert, update, delete, create, drop, grant, user_manage, system, set_transaction]
+  transport_encryption: Optional AES-GCM 256-bit full-stream encryption; TLS on the REST server (port 40443).

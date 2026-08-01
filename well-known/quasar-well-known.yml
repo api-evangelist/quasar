@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: probed
+host: https://quasar.ai
+note: All standard discovery documents returned 404 on the marketing host and the docs host as of the probe date. No files saved.
+documents:
+- path: /.well-known/security.txt
+  host: quasar.ai
+  status: 404
+- path: /.well-known/openid-configuration
+  host: quasar.ai
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: quasar.ai
+  status: 404
+- path: /.well-known/api-catalog
+  host: quasar.ai
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: quasar.ai
+  status: 404
+- path: /.well-known/security.txt
+  host: doc.quasar.ai
+  status: 404
+- path: /.well-known/openid-configuration
+  host: doc.quasar.ai
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  host: doc.quasar.ai
+  status: 404
+- path: /.well-known/api-catalog
+  host: doc.quasar.ai
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: doc.quasar.ai
+  status: 404

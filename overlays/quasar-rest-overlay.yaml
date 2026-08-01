@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for QuasarDB REST API
+  version: 1.0.0
+extends: openapi/quasar-rest-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: quasar
+    x-apievangelist-company: Quasar (QuasarDB / Bureau 14)
+    x-apievangelist-category: time-series-database
+    x-apievangelist-auth: JWT bearer token via POST /login; public/private key + RBAC on the cluster
+- target: $.info
+  update:
+    x-apievangelist-links:
+      documentation: https://doc.quasar.ai/master/
+      rest_guide: https://doc.quasar.ai/master/user-guide/api/rest.html
+      trust_center: https://trust.quasar.ai/
+- target: $.securityDefinitions.Bearer
+  update:
+    description: "JWT bearer token obtained from POST /login; pass as `Authorization: Bearer <token>`. Valid 12 hours."
+- target: $.securityDefinitions.UrlParam
+  update:
+    description: Same JWT passed as a `token` query-string parameter for clients that cannot set headers.

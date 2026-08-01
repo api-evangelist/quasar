@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/quasar-rest-openapi-original.json
+note: No official hosted/remote QuasarDB MCP server was found. Candidate tool list derived one-to-one from the QuasarDB REST API operations.
+server:
+  name: quasar
+  transport: http
+tools:
+- name: login
+  description: Authenticate with a username and secret key to obtain a JWT bearer token (valid 12 hours).
+  source_operation: openapi/quasar-rest-openapi-original.json#login
+- name: post_query
+  description: Execute a QuasarDB SQL query and return tabular results.
+  source_operation: openapi/quasar-rest-openapi-original.json#post-query
+- name: get_tags
+  description: List tags in the cluster.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-tags
+- name: get_table_csv
+  description: Export a table's contents as CSV.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-table-csv
+- name: get_cluster
+  description: Retrieve cluster-wide disk/memory usage and node status.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-cluster
+- name: get_node
+  description: Retrieve resource metrics for a single node by id.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-node
+- name: status_liveness
+  description: Check that the REST API server is up.
+  source_operation: openapi/quasar-rest-openapi-original.json#status-liveness
+- name: status_readiness
+  description: Check that the REST API server can reach the cluster.
+  source_operation: openapi/quasar-rest-openapi-original.json#status-readiness
+- name: get_parallelism
+  description: Read the configured client parallelism option.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-parallelism
+- name: get_max_in_buffer_size
+  description: Read the configured maximum in-buffer size option.
+  source_operation: openapi/quasar-rest-openapi-original.json#get-max-in-buffer-size
+- name: prometheus_read
+  description: Prometheus remote-read endpoint.
+  source_operation: openapi/quasar-rest-openapi-original.json#prometheusRead
+- name: prometheus_write
+  description: Prometheus remote-write endpoint.
+  source_operation: openapi/quasar-rest-openapi-original.json#prometheusWrite

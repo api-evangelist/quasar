@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://doc.quasar.ai/master/administration/security.html + https://doc.quasar.ai/master/user-guide/api/rest.html + https://doc.quasar.ai/master/
+note: QuasarDB ships a suite of command-line tools with the server/binary distribution (Debian/RPM/Windows/Docker packages under github.com/bureau14). These are operational binaries rather than a single unified `qdb` CLI.
+install:
+- method: debian
+  source: https://github.com/bureau14/qdb-pkg-debian
+- method: rpm
+  source: https://github.com/bureau14/qdb-pkg-rpm
+- method: windows
+  source: https://github.com/bureau14/qdb-pkg-windows
+- method: docker
+  source: https://github.com/bureau14/qdbd-docker
+tools:
+- name: qdbd
+  purpose: The QuasarDB cluster daemon (database server node).
+- name: qdbsh
+  purpose: Interactive SQL shell for running queries and CREATE/ALTER/DROP USER management.
+- name: qdb_rest
+  purpose: The QuasarDB REST API server (see openapi/quasar-rest-openapi-original.json).
+- name: qdb_cluster_keygen
+  purpose: Generate cluster public/private key pairs for authentication.
+- name: qdb_user_add
+  purpose: Offline utility to add users and generate user security tokens.

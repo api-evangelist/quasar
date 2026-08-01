@@ -1,27 +1,202 @@
 aid: quasar
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/quasar.png
 name: Quasar
-description: 'Quasar is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Infrastructure SaaS. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Quasar (QuasarDB, by Bureau 14) is a distributed, high-performance time-series database built for
+  the hardest data problems, where precision, speed, scale, and accuracy must hold at the same time.
+  It combines live ingestion, lossless-compressed historical retention, and heavy analytics on a
+  single distributed system, deployed in cloud, edge, and appliance form across aerospace and defense,
+  finance, industrial operations, and scientific research. QuasarDB exposes a JWT-authenticated REST
+  API plus native client libraries in Python, Java, Go, .NET, C, PHP, R, and Ruby, and integrates with
+  Grafana, Kafka, Spark, NATS, Prometheus, and Dask.
 url: https://raw.githubusercontent.com/api-evangelist/quasar/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - partech
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-- Infrastructure Saas
-apis: []
+- Time Series Database
+- Database
+- Analytics
+- Infrastructure
+- Real-Time Data
+- Aerospace
+- Finance
+apis:
+- aid: quasar:quasar-cluster-api
+  name: Quasar cluster API
+  description: Operational statistics about the QuasarDB cluster
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-cluster-api-openapi.yml
+- aid: quasar:quasar-login-api
+  name: Quasar Login API
+  description: The Login API from Quasar — 1 operation(s) for login.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - Login
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-login-api-openapi.yml
+- aid: quasar:quasar-max-in-buffer-size-api
+  name: Quasar max-in-buffer-size API
+  description: The max-in-buffer-size API from Quasar — 1 operation(s) for max-in-buffer-size.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - max-in-buffer-size
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-max-in-buffer-size-api-openapi.yml
+- aid: quasar:quasar-option-api
+  name: Quasar option API
+  description: The option API from Quasar — 2 operation(s) for option.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - option
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-option-api-openapi.yml
+- aid: quasar:quasar-parallelism-api
+  name: Quasar parallelism API
+  description: The parallelism API from Quasar — 1 operation(s) for parallelism.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - parallelism
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-parallelism-api-openapi.yml
+- aid: quasar:quasar-prometheus-api
+  name: Quasar Prometheus API
+  description: The Prometheus API from Quasar — 2 operation(s) for prometheus.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - Prometheus
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-prometheus-api-openapi.yml
+- aid: quasar:quasar-query-api
+  name: Quasar query API
+  description: The query API from Quasar — 1 operation(s) for query.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - query
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-query-api-openapi.yml
+- aid: quasar:quasar-status-api
+  name: Quasar Status API
+  description: The Status API from Quasar — 2 operation(s) for status.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-status-api-openapi.yml
+- aid: quasar:quasar-tables-api
+  name: Quasar Tables API
+  description: The Tables API from Quasar — 1 operation(s) for tables.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-tables-api-openapi.yml
+- aid: quasar:quasar-tags-api
+  name: Quasar tags API
+  description: The tags API from Quasar — 1 operation(s) for tags.
+  humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
+  baseURL: https://quasar.ai
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/quasar-tags-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://doc.quasar.ai/master/
+- type: Documentation
+  url: https://doc.quasar.ai/master/
+- type: APIReference
+  url: https://doc.quasar.ai/master/user-guide/api/rest.html
+- type: GettingStarted
+  url: https://doc.quasar.ai/master/user-guide/howto/index.html
+- type: GitHubOrganization
+  url: https://github.com/bureau14
+- type: Blog
+  url: https://quasar.ai/blog-news/
+- type: Pricing
+  url: https://quasar.ai/deployment-pricing/
+- type: Support
+  url: https://quasar.ai/support-services/
+- type: Packages
+  url: packages/quasar-packages.yml
+- type: SDKs
+  url: packages/quasar-packages.yml
+- type: CLI
+  url: cli/quasar-cli.yml
+- type: MCPServer
+  url: mcp/quasar-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/quasar-llms.txt
+- type: Authentication
+  url: authentication/quasar-authentication.yml
+- type: Conventions
+  url: conventions/quasar-conventions.yml
+- type: ErrorCatalog
+  url: errors/quasar-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/quasar-lifecycle.yml
+- type: DataModel
+  url: data-model/quasar-data-model.yml
+- type: Conformance
+  url: conformance/quasar-conformance.yml
+- type: Compliance
+  url: https://trust.quasar.ai/
+- type: AgenticAccess
+  url: agentic-access/quasar-agentic-access.yml
+- type: TrustCenter
+  url: security/quasar-trust-center.yml
+- type: DomainSecurity
+  url: security/quasar-domain-security.yml
 - type: Website
   url: https://quasar.ai/
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

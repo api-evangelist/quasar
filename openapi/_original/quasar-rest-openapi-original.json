@@ -1,0 +1,675 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "QuasarDB API",
+    "version": "3.15.0-nightly.0",
+    "description": "Find out more at https://doc.quasardb.net"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "UrlParam": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    },
+    {
+      "UrlParam": []
+    }
+  ],
+  "basePath": "/api",
+  "paths": {
+    "/prometheus/read": {
+      "post": {
+        "operationId": "prometheusRead",
+        "description": "The read endpoint for remote Prometheus storage",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "required": true,
+            "description": "The samples in snappy-encoded protocol buffer format sent from Prometheus"
+          }
+        ],
+        "security": [],
+        "consumes": [
+          "application/x-protobuf"
+        ],
+        "produces": [
+          "application/x-protobuf"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          }
+        }
+      }
+    },
+    "/prometheus/write": {
+      "post": {
+        "operationId": "prometheusWrite",
+        "description": "The write endpoint for remote Prometheus storage",
+        "parameters": [
+          {
+            "name": "timeseries",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "required": true,
+            "description": "The samples in snappy-encoded protocol buffer format sent from Prometheus"
+          }
+        ],
+        "security": [],
+        "consumes": [
+          "application/x-protobuf"
+        ],
+        "produces": [
+          "application/x-protobuf"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "operationId": "login",
+        "security": [],
+        "parameters": [
+          {
+            "name": "credential",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Credential"
+            },
+            "required": true,
+            "description": "The user's credential"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Token"
+            },
+            "description": "Successful operation"
+          },
+          "401": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          }
+        }
+      }
+    },
+    "/status/liveness": {
+      "get": {
+        "security": [],
+        "operationId": "status-liveness",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          }
+        }
+      }
+    },
+    "/status/readiness": {
+      "get": {
+        "security": [],
+        "operationId": "status-readiness",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          }
+        }
+      }
+    },
+    "/option/parallelism": {
+      "get": {
+        "operationId": "get-parallelism",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          }
+        },
+        "tags": [
+          "option",
+          "parallelism"
+        ],
+        "summary": "Get the client max parallelism for this logged-in user"
+      }
+    },
+    "/option/max-in-buffer-size": {
+      "get": {
+        "operationId": "get-max-in-buffer-size",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "Successful operation"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          }
+        },
+        "tags": [
+          "option",
+          "max-in-buffer-size"
+        ],
+        "summary": "Get the client max in buffer size"
+      }
+    },
+    "/query": {
+      "post": {
+        "operationId": "post-query",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Query"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/QueryResult"
+            },
+            "description": "Successful operation",
+            "examples": {
+              "application/json": {
+                "tables": [
+                  {
+                    "name": "timeseries",
+                    "columns": [
+                      {
+                        "name": "timestamps",
+                        "data": [
+                          "2017-01-01 T00:00:00",
+                          "2017-01-01 T00:00:01"
+                        ]
+                      },
+                      {
+                        "name": "column_1",
+                        "data": [
+                          0,
+                          1
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "query"
+        ],
+        "summary": "Query the database"
+      }
+    },
+    "/tags": {
+      "get": {
+        "operationId": "get-tags",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "regex",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/QueryResult"
+            },
+            "description": "Successful Operation",
+            "examples": {
+              "application/json": {
+                "tables": [
+                  {
+                    "name": "tags",
+                    "columns": [
+                      {
+                        "name": "tag",
+                        "type": "string",
+                        "data": [
+                          "tag1",
+                          "tag2"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "tags"
+        ],
+        "summary": "Query the database for all tag names"
+      }
+    },
+    "/tables/{name}.csv": {
+      "get": {
+        "operationId": "get-table-csv",
+        "summary": "Fetch the rows of a table between a given date range and return as csv",
+        "produces": [
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request."
+          },
+          "500": {
+            "description": "Internal Error."
+          },
+          "200": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/cluster": {
+      "get": {
+        "operationId": "get-cluster",
+        "responses": {
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Cluster"
+            },
+            "description": "Successful operation",
+            "examples": {
+              "application/json": {
+                "memoryTotal": 312204568,
+                "memoryUsed": 55440601,
+                "diskTotal": 24408800000,
+                "diskUsed": 801210000,
+                "nodes": [
+                  "172.14.0.2:2836",
+                  "172.14.0.3:2836"
+                ],
+                "status": "stable"
+              }
+            }
+          }
+        },
+        "tags": [
+          "cluster"
+        ],
+        "summary": "Get a summary of the cluster status"
+      }
+    },
+    "/cluster/nodes/{id}": {
+      "get": {
+        "operationId": "get-node",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "The node's id (address and host)"
+          }
+        ],
+        "responses": {
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Bad Request."
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/QdbError"
+            },
+            "description": "Internal Error."
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            },
+            "description": "The requested resource could not be found but may be available again in the future."
+          },
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Node"
+            },
+            "description": "Successful operation",
+            "examples": {
+              "application/json": {
+                "id": "172.14.0.2:2836",
+                "os": "Linux",
+                "quasardbVersion": "1.0.1",
+                "memoryTotal": 22857027000,
+                "memoryUsed": 2515456400,
+                "diskTotal": 99832160000,
+                "diskUsed": 360678000,
+                "cpuTotal": 2,
+                "cpuUsed": 1.84
+              }
+            }
+          }
+        },
+        "tags": [
+          "cluster"
+        ],
+        "summary": "Get information about a single node in the cluster"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "cluster",
+      "description": "Operational statistics about the QuasarDB cluster"
+    }
+  ],
+  "definitions": {
+    "Principal": {
+      "type": "string"
+    },
+    "Credential": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "secret_key": {
+          "type": "string"
+        }
+      }
+    },
+    "Token": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Query": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        }
+      }
+    },
+    "QdbError": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "QueryColumn": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "QueryTable": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QueryColumn"
+          }
+        }
+      }
+    },
+    "QueryResult": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QueryTable"
+          }
+        }
+      },
+      "required": [
+        "tables"
+      ]
+    },
+    "Cluster": {
+      "type": "object",
+      "properties": {
+        "memoryTotal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "memoryUsed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diskTotal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diskUsed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "stable",
+            "unstable",
+            "unreachable"
+          ]
+        }
+      },
+      "required": [
+        "memoryTotal",
+        "memoryUsed",
+        "diskTotal",
+        "diskUsed",
+        "nodes",
+        "status"
+      ]
+    },
+    "Node": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "quasardbVersion": {
+          "type": "string"
+        },
+        "memoryTotal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "memoryUsed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diskTotal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diskUsed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cpuTotal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cpuUsed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "os",
+        "quasardbVersion",
+        "memoryTotal",
+        "memoryUsed",
+        "diskTotal",
+        "diskUsed",
+        "cpuTotal",
+        "cpuUsed"
+      ]
+    }
+  }
+}

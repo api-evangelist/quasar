@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/quasar-rest-openapi-original.json
+note: Derived from the QuasarDB REST API OpenAPI definitions. QuasarDB's core storage model is time-series tables (columns of typed data); the REST surface exposes cluster/query resources.
+entities:
+- name: Cluster
+  fields: [memoryTotal, memoryUsed, diskTotal, diskUsed, nodes, status]
+- name: Node
+  fields: [id, os, quasardbVersion, memoryTotal, memoryUsed, diskTotal, diskUsed, cpuTotal, cpuUsed]
+- name: Query
+  fields: [query]
+- name: QueryResult
+  fields: [tables]
+- name: QueryTable
+  fields: [name, columns]
+- name: QueryColumn
+  fields: [name, type, data]
+- name: Credential
+  fields: [username, secret_key]
+- name: Token
+  fields: [token]
+relationships:
+- from: Cluster
+  to: Node
+  type: has_many
+  via: nodes
+- from: QueryResult
+  to: QueryTable
+  type: has_many
+  via: tables
+- from: QueryTable
+  to: QueryColumn
+  type: has_many
+  via: columns
+- from: Credential
+  to: Token
+  type: has_one
+  via: login

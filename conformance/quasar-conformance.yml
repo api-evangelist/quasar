@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/quasar-rest-openapi-original.json + https://trust.quasar.ai/ + https://quasar.ai/deployment-pricing/
+standards:
+- id: soc2-type2
+  conforms: true
+  evidence: SOC 2 Type 2 certification published on https://trust.quasar.ai/ (report available on request); reaffirmed on the deployment & pricing page for cloud deployments.
+- id: soc3
+  conforms: true
+  evidence: SOC 3 report available on request per https://trust.quasar.ai/.
+- id: prometheus-remote-rw
+  conforms: true
+  evidence: Implements Prometheus remote read/write endpoints (POST /prometheus/read, POST /prometheus/write).
+- id: bearer-jwt
+  conforms: true
+  evidence: securityDefinitions declares an Authorization bearer (JWT) apiKey scheme issued by POST /login.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors return a bare {"message": string} (QdbError) as application/json, not application/problem+json.'
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security scheme; auth is JWT bearer over key-based cluster credentials.
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response over HTTP(S); consumes/produces application/json.

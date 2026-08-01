@@ -1,0 +1,32 @@
+{
+  "provider": "quasar",
+  "sources": [
+    "quasar-cluster-api-openapi.yml",
+    "quasar-login-api-openapi.yml",
+    "quasar-max-in-buffer-size-api-openapi.yml",
+    "quasar-option-api-openapi.yml",
+    "quasar-parallelism-api-openapi.yml",
+    "quasar-prometheus-api-openapi.yml",
+    "quasar-query-api-openapi.yml",
+    "quasar-status-api-openapi.yml",
+    "quasar-tables-api-openapi.yml",
+    "quasar-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "quasar-cluster-api-openapi.yml",
+    "quasar-login-api-openapi.yml",
+    "quasar-max-in-buffer-size-api-openapi.yml",
+    "quasar-option-api-openapi.yml",
+    "quasar-parallelism-api-openapi.yml",
+    "quasar-prometheus-api-openapi.yml",
+    "quasar-query-api-openapi.yml",
+    "quasar-status-api-openapi.yml",
+    "quasar-tables-api-openapi.yml",
+    "quasar-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

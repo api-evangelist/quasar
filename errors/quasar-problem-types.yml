@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/quasar-rest-openapi-original.json
+format: custom
+envelope:
+  content_type: application/json
+  schema: QdbError
+  fields:
+    message: Human-readable error message string.
+note: 'QuasarDB REST returns a bare {"message": "..."} object (not RFC 9457 problem+json). Statuses below are derived from the OpenAPI responses[].'
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Malformed request, invalid query, or invalid option/parameter.
+  operations: [post-query, get-tags, get-table-csv, get-cluster, get-node, get-parallelism, get-max-in-buffer-size]
+- status: 401
+  title: Unauthorized
+  meaning: Login failed or bearer token missing/invalid/expired.
+  operations: [login]
+- status: 404
+  title: Not Found
+  meaning: The requested resource (e.g. a cluster node id) does not exist.
+  operations: [get-node]
+- status: 500
+  title: Internal Error
+  meaning: Server-side/cluster error while processing the request.
+  operations: [post-query, get-tags, get-table-csv, get-cluster, get-node, status-liveness, status-readiness, prometheusRead, prometheusWrite]

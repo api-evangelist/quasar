@@ -1,0 +1,30 @@
+# Quasar (QuasarDB)
+
+> QuasarDB is a distributed, high-performance time-series database from Bureau 14, built for the hardest data problems where precision, speed, scale, and accuracy must hold simultaneously. It combines live ingestion, lossless-compressed historical retention, and heavy analytics on a single distributed system, with deployments across aerospace & defense, finance, industrial operations, and scientific research. It exposes a REST API plus native client libraries in Python, Java, Go, .NET, C, PHP, R, Ruby, and (archived) Node.js.
+
+## APIs
+- [QuasarDB REST API](https://doc.quasar.ai/master/user-guide/api/rest.html): JWT-authenticated REST server (default ports 40080 / 40443, basePath /api) for query, cluster/node metrics, tags, CSV export, and Prometheus remote read/write.
+
+## Specs
+- [OpenAPI (Swagger 2.0)](https://raw.githubusercontent.com/api-evangelist/quasar/refs/heads/main/openapi/quasar-rest-openapi-original.json): QuasarDB REST API, 12 operations.
+
+## Docs
+- [Documentation](https://doc.quasar.ai/master/)
+- [REST API guide](https://doc.quasar.ai/master/user-guide/api/rest.html)
+- [Query language reference](https://doc.quasar.ai/master/queries/index.html)
+- [Security & authentication](https://doc.quasar.ai/master/administration/security.html)
+- [Client APIs (Python/Java/Go/.NET/C)](https://doc.quasar.ai/master/user-guide/api/python.html)
+
+## Clients
+- [GitHub org (bureau14)](https://github.com/bureau14)
+- Python: pip install quasardb
+- .NET: dotnet add package quasardb
+- Go: go get github.com/bureau14/qdb-api-go
+
+## Company
+- [Website](https://quasar.ai/)
+- [Deployment & Pricing](https://quasar.ai/deployment-pricing/)
+- [Architecture](https://quasar.ai/quasar-architecture/)
+- [Case Studies](https://quasar.ai/case-studies/)
+- [Blog & News](https://quasar.ai/blog-news/)
+- [Trust Center](https://trust.quasar.ai/) (SOC 2 Type 2, SOC 3)

@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/quasar-rest-openapi-original.json
+skills:
+- file: quasar-run-query.md
+  name: Authenticate and run a QuasarDB query
+  api: openapi/quasar-rest-openapi-original.json
+  operations: [login, post-query, get-tags, get-table-csv]
+- file: quasar-cluster-health.md
+  name: Monitor QuasarDB cluster health
+  api: openapi/quasar-rest-openapi-original.json
+  operations: [status-liveness, status-readiness, get-cluster, get-node]
