@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster parallelism API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "parallelism",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the client max parallelism for this logged-in user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/option/parallelism"
+          },
+          "docs": "Get the client max parallelism for this logged-in user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

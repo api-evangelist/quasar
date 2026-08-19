@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster tags API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the database for all tag names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tags",
+            "params": [
+              {
+                "name": "regex",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query the database for all tag names"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

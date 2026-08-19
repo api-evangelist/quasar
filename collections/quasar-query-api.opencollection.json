@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster query API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/query"
+          },
+          "docs": "Query the database"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

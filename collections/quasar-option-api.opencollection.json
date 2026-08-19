@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster option API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "option",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the client max parallelism for this logged-in user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/option/parallelism"
+          },
+          "docs": "Get the client max parallelism for this logged-in user"
+        },
+        {
+          "info": {
+            "name": "Get the client max in buffer size",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/option/max-in-buffer-size"
+          },
+          "docs": "Get the client max in buffer size"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

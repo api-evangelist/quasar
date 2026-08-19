@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster Prometheus API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prometheus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "prometheusRead",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/prometheus/read"
+          },
+          "docs": "The read endpoint for remote Prometheus storage"
+        },
+        {
+          "info": {
+            "name": "prometheusWrite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/prometheus/write"
+          },
+          "docs": "The write endpoint for remote Prometheus storage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

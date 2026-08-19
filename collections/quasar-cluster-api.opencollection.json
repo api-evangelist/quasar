@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuasarDB cluster API",
+    "version": "3.15.0-nightly.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a summary of the cluster status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster"
+          },
+          "docs": "Get a summary of the cluster status"
+        },
+        {
+          "info": {
+            "name": "Get information about a single node in the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/nodes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The node's id (address and host)"
+              }
+            ]
+          },
+          "docs": "Get information about a single node in the cluster"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

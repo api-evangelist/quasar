@@ -2,7 +2,8 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/quasar-rest-openapi-original.json
-note: No official hosted/remote QuasarDB MCP server was found. Candidate tool list derived one-to-one from the QuasarDB REST API operations.
+note: No official hosted/remote QuasarDB MCP server was found. Candidate tool list derived one-to-one
+  from the QuasarDB REST API operations.
 server:
   name: quasar
   transport: http
@@ -43,3 +44,9 @@ tools:
 - name: prometheus_write
   description: Prometheus remote-write endpoint.
   source_operation: openapi/quasar-rest-openapi-original.json#prometheusWrite
+deployment:
+  mode: none
+  verified: derived
+  tools: 12
+  checked: '2026-08-12'
+  source: catalog MCP census
