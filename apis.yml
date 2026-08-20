@@ -45,6 +45,8 @@ apis:
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
   baseURL: https://quasar.ai
   tags:
+  - Cluster
+  tags_raw:
   - cluster
   properties:
   - type: OpenAPI
@@ -75,6 +77,8 @@ apis:
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
   baseURL: https://quasar.ai
   tags:
+  - Option
+  tags_raw:
   - option
   properties:
   - type: OpenAPI
@@ -105,6 +109,8 @@ apis:
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
   baseURL: https://quasar.ai
   tags:
+  - Query
+  tags_raw:
   - query
   properties:
   - type: OpenAPI
@@ -135,6 +141,8 @@ apis:
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
   baseURL: https://quasar.ai
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
