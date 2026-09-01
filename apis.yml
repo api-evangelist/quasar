@@ -89,7 +89,7 @@ apis:
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
   baseURL: https://quasar.ai
   tags:
-  - option
+  - Option
   tags_raw:
   - option
   properties:
