@@ -1,16 +1,10 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: QuasarDB cluster Prometheus API
+  title: QuasarDB Prometheus API
   version: 3.15.0-nightly.0
   description: Find out more at https://doc.quasardb.net
-basePath: /api
-schemes:
-- http
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /api
 security:
 - Bearer: []
 - UrlParam: []
@@ -21,68 +15,71 @@ paths:
     post:
       operationId: prometheusRead
       description: The read endpoint for remote Prometheus storage
-      parameters:
-      - name: query
-        in: body
-        schema:
-          type: string
-          format: binary
-        required: true
-        description: The samples in snappy-encoded protocol buffer format sent from Prometheus
       security: []
-      consumes:
-      - application/x-protobuf
-      produces:
-      - application/x-protobuf
       responses:
         '200':
           description: OK
-          schema:
-            type: string
-            format: binary
+          content:
+            application/x-protobuf:
+              schema:
+                type: string
+                format: binary
         '500':
-          schema:
-            $ref: '#/definitions/QdbError'
           description: Internal Error.
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/QdbError'
+      requestBody:
+        content:
+          application/x-protobuf:
+            schema:
+              type: string
+              format: binary
+        description: The samples in snappy-encoded protocol buffer format sent from Prometheus
+        required: true
       tags:
       - Prometheus
+      summary: Prometheus read
+      x-summary-source: derived
   /prometheus/write:
     post:
       operationId: prometheusWrite
       description: The write endpoint for remote Prometheus storage
-      parameters:
-      - name: timeseries
-        in: body
-        schema:
-          type: string
-          format: binary
-        required: true
-        description: The samples in snappy-encoded protocol buffer format sent from Prometheus
       security: []
-      consumes:
-      - application/x-protobuf
-      produces:
-      - application/x-protobuf
       responses:
         '200':
           description: OK
         '500':
-          schema:
-            $ref: '#/definitions/QdbError'
           description: Internal Error.
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/QdbError'
+      requestBody:
+        content:
+          application/x-protobuf:
+            schema:
+              type: string
+              format: binary
+        description: The samples in snappy-encoded protocol buffer format sent from Prometheus
+        required: true
       tags:
       - Prometheus
-definitions:
-  QdbError:
-    properties:
-      message:
-        type: string
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-  UrlParam:
-    type: apiKey
-    name: token
-    in: query
+      summary: Prometheus write
+      x-summary-source: derived
+components:
+  schemas:
+    QdbError:
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+    UrlParam:
+      type: apiKey
+      name: token
+      in: query

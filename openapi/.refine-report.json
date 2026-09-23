@@ -1,32 +1,53 @@
 {
   "provider": "quasar",
   "sources": [
-    "quasar-cluster-api-openapi.yml",
-    "quasar-login-api-openapi.yml",
-    "quasar-max-in-buffer-size-api-openapi.yml",
-    "quasar-option-api-openapi.yml",
-    "quasar-parallelism-api-openapi.yml",
-    "quasar-prometheus-api-openapi.yml",
-    "quasar-query-api-openapi.yml",
-    "quasar-status-api-openapi.yml",
-    "quasar-tables-api-openapi.yml",
-    "quasar-tags-api-openapi.yml"
+    "_original/quasar-rest-openapi-original.json"
   ],
   "outputs": [
-    "quasar-cluster-api-openapi.yml",
     "quasar-login-api-openapi.yml",
+    "quasar-prometheus-api-openapi.yml",
+    "quasar-status-api-openapi.yml",
+    "quasar-tables-api-openapi.yml",
+    "quasar-cluster-api-openapi.yml",
     "quasar-max-in-buffer-size-api-openapi.yml",
     "quasar-option-api-openapi.yml",
     "quasar-parallelism-api-openapi.yml",
-    "quasar-prometheus-api-openapi.yml",
     "quasar-query-api-openapi.yml",
-    "quasar-status-api-openapi.yml",
-    "quasar-tables-api-openapi.yml",
     "quasar-tags-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "quasar-rest-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "quasar-rest-openapi-original.json: tagged paths POST /prometheus/read -> Prometheus",
+    "quasar-rest-openapi-original.json: tagged paths POST /prometheus/write -> Prometheus",
+    "quasar-rest-openapi-original.json: tagged paths POST /login -> Login",
+    "quasar-rest-openapi-original.json: tagged paths GET /status/liveness -> Status",
+    "quasar-rest-openapi-original.json: tagged paths GET /status/readiness -> Status",
+    "quasar-rest-openapi-original.json: tagged paths GET /tables/{name}.csv -> Tables",
+    "quasar-rest-openapi-original.json: declared missing tag: Login",
+    "quasar-rest-openapi-original.json: declared missing tag: Prometheus",
+    "quasar-rest-openapi-original.json: declared missing tag: Status",
+    "quasar-rest-openapi-original.json: declared missing tag: Tables",
+    "quasar-rest-openapi-original.json: declared missing tag: max-in-buffer-size",
+    "quasar-rest-openapi-original.json: declared missing tag: option",
+    "quasar-rest-openapi-original.json: declared missing tag: parallelism",
+    "quasar-rest-openapi-original.json: declared missing tag: query",
+    "quasar-rest-openapi-original.json: declared missing tag: tags",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "quasar-cluster-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-login-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-max-in-buffer-size-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-option-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-parallelism-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-prometheus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-tables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quasar-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,103 +1,103 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: QuasarDB cluster query API
+  title: QuasarDB Query API
   version: 3.15.0-nightly.0
   description: Find out more at https://doc.quasardb.net
-basePath: /api
-schemes:
-- http
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /api
 security:
 - Bearer: []
 - UrlParam: []
 tags:
-- name: query
+- name: Query
 paths:
   /query:
     post:
       operationId: post-query
-      parameters:
-      - name: query
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/Query'
       responses:
         '400':
-          schema:
-            $ref: '#/definitions/QdbError'
           description: Bad Request.
-        '500':
-          schema:
-            $ref: '#/definitions/QdbError'
-          description: Internal Error.
-        '200':
-          schema:
-            $ref: '#/definitions/QueryResult'
-          description: Successful operation
-          examples:
+          content:
             application/json:
-              tables:
-              - name: timeseries
-                columns:
-                - name: timestamps
-                  data:
-                  - 2017-01-01 T00:00:00
-                  - 2017-01-01 T00:00:01
-                - name: column_1
-                  data:
-                  - 0
-                  - 1
+              schema:
+                $ref: '#/components/schemas/QdbError'
+        '500':
+          description: Internal Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QdbError'
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+              example:
+                tables:
+                - name: timeseries
+                  columns:
+                  - name: timestamps
+                    data:
+                    - 2017-01-01 T00:00:00
+                    - 2017-01-01 T00:00:01
+                  - name: column_1
+                    data:
+                    - 0
+                    - 1
       tags:
-      - query
+      - Query
       summary: Query the database
-definitions:
-  QueryTable:
-    properties:
-      name:
-        type: string
-      columns:
-        type: array
-        items:
-          $ref: '#/definitions/QueryColumn'
-  QdbError:
-    properties:
-      message:
-        type: string
-  QueryColumn:
-    properties:
-      name:
-        type: string
-      type:
-        type: string
-      data:
-        type: array
-        items:
-          type: object
-  Query:
-    type: object
-    properties:
-      query:
-        type: string
-  QueryResult:
-    type: object
-    properties:
-      tables:
-        type: array
-        items:
-          $ref: '#/definitions/QueryTable'
-    required:
-    - tables
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-  UrlParam:
-    type: apiKey
-    name: token
-    in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+        required: true
+components:
+  schemas:
+    QueryColumn:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    QdbError:
+      properties:
+        message:
+          type: string
+    QueryTable:
+      properties:
+        name:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryColumn'
+    QueryResult:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryTable'
+      required:
+      - tables
+    Query:
+      type: object
+      properties:
+        query:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+    UrlParam:
+      type: apiKey
+      name: token
+      in: query

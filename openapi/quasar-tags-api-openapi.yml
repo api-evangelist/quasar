@@ -1,21 +1,15 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: QuasarDB cluster tags API
+  title: QuasarDB Tags API
   version: 3.15.0-nightly.0
   description: Find out more at https://doc.quasardb.net
-basePath: /api
-schemes:
-- http
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /api
 security:
 - Bearer: []
 - UrlParam: []
 tags:
-- name: tags
+- name: Tags
 paths:
   /tags:
     get:
@@ -23,72 +17,79 @@ paths:
       parameters:
       - in: query
         name: regex
-        type: string
         required: false
+        schema:
+          type: string
       responses:
         '400':
-          schema:
-            $ref: '#/definitions/QdbError'
           description: Bad Request.
-        '500':
-          schema:
-            $ref: '#/definitions/QdbError'
-          description: Internal Error.
-        '200':
-          schema:
-            $ref: '#/definitions/QueryResult'
-          description: Successful Operation
-          examples:
+          content:
             application/json:
-              tables:
-              - name: tags
-                columns:
-                - name: tag
-                  type: string
-                  data:
-                  - tag1
-                  - tag2
+              schema:
+                $ref: '#/components/schemas/QdbError'
+        '500':
+          description: Internal Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QdbError'
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+              example:
+                tables:
+                - name: tags
+                  columns:
+                  - name: tag
+                    type: string
+                    data:
+                    - tag1
+                    - tag2
       tags:
-      - tags
+      - Tags
       summary: Query the database for all tag names
-definitions:
-  QueryTable:
-    properties:
-      name:
-        type: string
-      columns:
-        type: array
-        items:
-          $ref: '#/definitions/QueryColumn'
-  QueryColumn:
-    properties:
-      name:
-        type: string
-      type:
-        type: string
-      data:
-        type: array
-        items:
-          type: object
-  QdbError:
-    properties:
-      message:
-        type: string
-  QueryResult:
-    type: object
-    properties:
-      tables:
-        type: array
-        items:
-          $ref: '#/definitions/QueryTable'
-    required:
-    - tables
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-  UrlParam:
-    type: apiKey
-    name: token
-    in: query
+components:
+  schemas:
+    QueryResult:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryTable'
+      required:
+      - tables
+    QdbError:
+      properties:
+        message:
+          type: string
+    QueryColumn:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    QueryTable:
+      properties:
+        name:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryColumn'
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+    UrlParam:
+      type: apiKey
+      name: token
+      in: query
