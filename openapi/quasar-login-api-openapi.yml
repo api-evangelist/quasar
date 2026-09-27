@@ -41,11 +41,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Token:
-      type: object
-      properties:
-        token:
-          type: string
     QdbError:
       properties:
         message:
@@ -56,6 +51,11 @@ components:
         username:
           type: string
         secret_key:
+          type: string
+    Token:
+      type: object
+      properties:
+        token:
           type: string
   securitySchemes:
     Bearer:

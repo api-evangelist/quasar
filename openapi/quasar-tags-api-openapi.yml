@@ -53,19 +53,6 @@ paths:
       summary: Query the database for all tag names
 components:
   schemas:
-    QueryResult:
-      type: object
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryTable'
-      required:
-      - tables
-    QdbError:
-      properties:
-        message:
-          type: string
     QueryColumn:
       properties:
         name:
@@ -84,6 +71,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryColumn'
+    QueryResult:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryTable'
+      required:
+      - tables
+    QdbError:
+      properties:
+        message:
+          type: string
   securitySchemes:
     Bearer:
       type: apiKey

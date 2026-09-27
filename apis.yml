@@ -53,10 +53,9 @@ tags:
 - Finance
 apis:
 - aid: quasar:quasar-cluster-api
-  name: Quasar cluster API
+  name: Quasar Cluster API
   description: Operational statistics about the QuasarDB cluster
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Cluster
   tags_raw:
@@ -68,27 +67,24 @@ apis:
   name: Quasar Login API
   description: The Login API from Quasar — 1 operation(s) for login.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Login
   properties:
   - type: OpenAPI
     url: openapi/quasar-login-api-openapi.yml
 - aid: quasar:quasar-max-in-buffer-size-api
-  name: Quasar max-in-buffer-size API
+  name: Quasar Max In Buffer Size API
   description: The max-in-buffer-size API from Quasar — 1 operation(s) for max-in-buffer-size.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - max-in-buffer-size
   properties:
   - type: OpenAPI
     url: openapi/quasar-max-in-buffer-size-api-openapi.yml
 - aid: quasar:quasar-option-api
-  name: Quasar option API
+  name: Quasar Option API
   description: The option API from Quasar — 2 operation(s) for option.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Option
   tags_raw:
@@ -97,10 +93,9 @@ apis:
   - type: OpenAPI
     url: openapi/quasar-option-api-openapi.yml
 - aid: quasar:quasar-parallelism-api
-  name: Quasar parallelism API
+  name: Quasar Parallelism API
   description: The parallelism API from Quasar — 1 operation(s) for parallelism.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - parallelism
   properties:
@@ -110,17 +105,15 @@ apis:
   name: Quasar Prometheus API
   description: The Prometheus API from Quasar — 2 operation(s) for prometheus.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Prometheus
   properties:
   - type: OpenAPI
     url: openapi/quasar-prometheus-api-openapi.yml
 - aid: quasar:quasar-query-api
-  name: Quasar query API
+  name: Quasar Query API
   description: The query API from Quasar — 1 operation(s) for query.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Query
   tags_raw:
@@ -132,7 +125,6 @@ apis:
   name: Quasar Status API
   description: The Status API from Quasar — 2 operation(s) for status.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Status
   properties:
@@ -142,17 +134,15 @@ apis:
   name: Quasar Tables API
   description: The Tables API from Quasar — 1 operation(s) for tables.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Tables
   properties:
   - type: OpenAPI
     url: openapi/quasar-tables-api-openapi.yml
 - aid: quasar:quasar-tags-api
-  name: Quasar tags API
+  name: Quasar Tags API
   description: The tags API from Quasar — 1 operation(s) for tags.
   humanURL: https://doc.quasar.ai/master/user-guide/api/rest.html
-  baseURL: https://quasar.ai
   tags:
   - Tags
   tags_raw:
