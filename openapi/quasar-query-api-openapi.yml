@@ -56,6 +56,19 @@ paths:
         required: true
 components:
   schemas:
+    QueryTable:
+      properties:
+        name:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryColumn'
+    Query:
+      type: object
+      properties:
+        query:
+          type: string
     QueryResult:
       type: object
       properties:
@@ -65,14 +78,6 @@ components:
             $ref: '#/components/schemas/QueryTable'
       required:
       - tables
-    QueryTable:
-      properties:
-        name:
-          type: string
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryColumn'
     QueryColumn:
       properties:
         name:
@@ -83,11 +88,6 @@ components:
           type: array
           items:
             type: object
-    Query:
-      type: object
-      properties:
-        query:
-          type: string
     QdbError:
       properties:
         message:

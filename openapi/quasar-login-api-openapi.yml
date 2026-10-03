@@ -45,17 +45,17 @@ components:
       properties:
         message:
           type: string
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
     Credential:
       type: object
       properties:
         username:
           type: string
         secret_key:
-          type: string
-    Token:
-      type: object
-      properties:
-        token:
           type: string
   securitySchemes:
     Bearer:

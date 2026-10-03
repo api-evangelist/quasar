@@ -96,6 +96,42 @@ paths:
       summary: Get information about a single node in the cluster
 components:
   schemas:
+    Cluster:
+      type: object
+      properties:
+        memoryTotal:
+          type: integer
+          minimum: 0
+        memoryUsed:
+          type: integer
+          minimum: 0
+        diskTotal:
+          type: integer
+          minimum: 0
+        diskUsed:
+          type: integer
+          minimum: 0
+        nodes:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - stable
+          - unstable
+          - unreachable
+      required:
+      - memoryTotal
+      - memoryUsed
+      - diskTotal
+      - diskUsed
+      - nodes
+      - status
+    QdbError:
+      properties:
+        message:
+          type: string
     Node:
       type: object
       properties:
@@ -133,42 +169,6 @@ components:
       - diskUsed
       - cpuTotal
       - cpuUsed
-    Cluster:
-      type: object
-      properties:
-        memoryTotal:
-          type: integer
-          minimum: 0
-        memoryUsed:
-          type: integer
-          minimum: 0
-        diskTotal:
-          type: integer
-          minimum: 0
-        diskUsed:
-          type: integer
-          minimum: 0
-        nodes:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - stable
-          - unstable
-          - unreachable
-      required:
-      - memoryTotal
-      - memoryUsed
-      - diskTotal
-      - diskUsed
-      - nodes
-      - status
-    QdbError:
-      properties:
-        message:
-          type: string
   securitySchemes:
     Bearer:
       type: apiKey
