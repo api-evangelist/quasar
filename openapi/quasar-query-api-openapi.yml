@@ -69,15 +69,6 @@ components:
       properties:
         query:
           type: string
-    QueryResult:
-      type: object
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryTable'
-      required:
-      - tables
     QueryColumn:
       properties:
         name:
@@ -88,6 +79,15 @@ components:
           type: array
           items:
             type: object
+    QueryResult:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryTable'
+      required:
+      - tables
     QdbError:
       properties:
         message:

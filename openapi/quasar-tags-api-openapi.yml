@@ -61,6 +61,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryColumn'
+    QdbError:
+      properties:
+        message:
+          type: string
     QueryColumn:
       properties:
         name:
@@ -71,10 +75,6 @@ components:
           type: array
           items:
             type: object
-    QdbError:
-      properties:
-        message:
-          type: string
     QueryResult:
       type: object
       properties:

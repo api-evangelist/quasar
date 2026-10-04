@@ -96,6 +96,10 @@ paths:
       summary: Get information about a single node in the cluster
 components:
   schemas:
+    QdbError:
+      properties:
+        message:
+          type: string
     Cluster:
       type: object
       properties:
@@ -128,10 +132,6 @@ components:
       - diskUsed
       - nodes
       - status
-    QdbError:
-      properties:
-        message:
-          type: string
     Node:
       type: object
       properties:
